@@ -36,7 +36,8 @@ def cloudwatch_post():
         logger.info(notification.message)
     else:
         logger.error('Invalid Signature. Message Rejected')
-    return Response('{"recived": "ok"}', status=200, mimetype='application/json')
+        return Response('{"received": "failure"}', status=400, mimetype='application/json')
+    return Response('{"received": "ok"}', status=200, mimetype='application/json')
 
 
 @app.route('/', methods=['GET'])
