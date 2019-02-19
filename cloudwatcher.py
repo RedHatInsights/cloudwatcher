@@ -24,6 +24,8 @@ else:
 
 logger = logging.getLogger(__name__)
 
+OPTIONS = {'whitelist': [],
+           'validate_signature': True}
 
 app = Flask(__name__)
 
@@ -31,7 +33,7 @@ app = Flask(__name__)
 @app.route('/cloudwatch', methods=['POST'])
 def cloudwatch_post():
     data = request.get_json()
-    sns_validation = utils.Validator()
+    sns_validation = utils.Validator(OPTIONS)
     notification = sns_validation.handle(data)
     if notification.is_valid:
         logger.info(notification.message)
