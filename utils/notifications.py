@@ -108,6 +108,7 @@ class SubscriptionConfirmation(BaseNotification):
             self.debug_messages.append("[SubscribeURL] not found")
         else:
             self.subscribe_url = self.raw_message['SubscribeURL']
+        self.subscribe()
         self._raise_errors_if_any()
 
     def subscribe(self):
