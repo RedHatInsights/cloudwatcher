@@ -100,7 +100,6 @@ class SubscriptionConfirmation(BaseNotification):
             self.debug_messages.append("[Message] not found")
         else:
             self.message = self.raw_message['Message']
-        #
         if 'Token' not in self.raw_message:
             self.debug_messages.append("[Token] not found")
         else:
@@ -118,7 +117,6 @@ class SubscriptionConfirmation(BaseNotification):
         """
         h = httplib2.Http()
         response, content = h.request(self.raw_message['SubscribeURL'], 'GET')
-        self.message = "Subscribed"
         # Todo:: log it app.logger.debug("topic subscription response: [%s]\n%s" % (response.status, content))
         return response, content
 
