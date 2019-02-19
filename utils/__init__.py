@@ -20,7 +20,7 @@ class Validator(object):
     ACCEPT = 'accept'
 
     _default_options = {
-        "white_list": [],
+        "white_list": ['arn:aws:sns:us-east-1:075747038871:test_alerts'],
         "validate_signature": True
 
     }
