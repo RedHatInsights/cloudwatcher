@@ -29,7 +29,7 @@ app = Flask(__name__)
 
 @app.route('/cloudwatch', methods=['POST'])
 def cloudwatch_post():
-    data = request.get_json()
+    data = request.get_json(force=True)
     sns_validation = utils.Validator()
     notification = sns_validation.handle(data)
     if notification.is_valid:
