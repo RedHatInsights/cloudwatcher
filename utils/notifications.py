@@ -94,13 +94,11 @@ class SubscriptionConfirmation(BaseNotification):
                       'TopicArn',
                       'Type')
 
-    def __int__(self, raw_message, validate_signature=True):
+    def __init__(self, raw_message, validate_signature=True):
         super(SubscriptionConfirmation, self).__init__(raw_message, validate_signature)
-        logger.info(self.raw_message)
         if 'Message' not in self.raw_message:
             self.debug_messages.append("[Message] not found")
         else:
-            logger.info("subscription message: [%s]", self.raw_message['Message'])
             self.message = self.raw_message['Message']
         if 'Token' not in self.raw_message:
             self.debug_messages.append("[Token] not found")
@@ -119,7 +117,6 @@ class SubscriptionConfirmation(BaseNotification):
         """
         h = httplib2.Http()
         response, content = h.request(self.raw_message['SubscribeURL'], 'GET')
-        logger.info("topic subscription response: [%s]\n%s", response, content)
         return response, content
 
 
