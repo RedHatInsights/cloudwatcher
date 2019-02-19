@@ -4,7 +4,7 @@ import sys
 
 import utils
 
-from flask import Flask, request
+from flask import Flask, request, Response
 from logstash_formatter import LogstashFormatterV1
 
 
@@ -36,6 +36,7 @@ def cloudwatch_post():
         logger.info(notification.message)
     else:
         logger.error('Invalid Signature. Message Rejected')
+    return Response('{"recived": "ok"}', status=200, mimetype='application/json')
 
 
 @app.route('/', methods=['GET'])
