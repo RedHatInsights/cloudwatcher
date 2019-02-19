@@ -96,9 +96,11 @@ class SubscriptionConfirmation(BaseNotification):
 
     def __int__(self, raw_message, validate_signature=True):
         super(SubscriptionConfirmation, self).__init__(raw_message, validate_signature)
+        logger.info(self.raw_message)
         if 'Message' not in self.raw_message:
             self.debug_messages.append("[Message] not found")
         else:
+            logger.info("subscription message: [%s]", self.raw_message['Message'])
             self.message = self.raw_message['Message']
         if 'Token' not in self.raw_message:
             self.debug_messages.append("[Token] not found")
