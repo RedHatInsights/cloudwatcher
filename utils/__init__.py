@@ -25,13 +25,13 @@ class Validator(object):
 
     }
 
-    def __init__(self, options):
+    def __init__(self):
         """
 
         :param options dict:
         :return:
         """
-        self.options = dict(self._default_options.items() + options.items())
+        self.options = self._default_options
 
     def handle(self, json_string):
         try:
