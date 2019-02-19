@@ -32,7 +32,7 @@ def cloudwatch_post():
     data = request.data
     sns_validation = utils.Validator()
     notification = sns_validation.handle(data)
-    logger.info(notification)
+    logger.info(notification.__dict__)
     if notification.is_valid:
         logger.info(notification.message)
     else:
