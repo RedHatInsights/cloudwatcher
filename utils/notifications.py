@@ -118,8 +118,8 @@ class SubscriptionConfirmation(BaseNotification):
         """
         h = httplib2.Http()
         response, content = h.request(self.raw_message['SubscribeURL'], 'GET')
+        self.message = "Subscribed"
         # Todo:: log it app.logger.debug("topic subscription response: [%s]\n%s" % (response.status, content))
-        self.message('Subscribed')
         return response, content
 
 
