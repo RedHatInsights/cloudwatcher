@@ -22,7 +22,10 @@ else:
         format="%(threadName)s %(levelname)s %(name)s - %(message)s"
     )
 
-logger = logging.getLogger(__name__)
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
+
+logger = logging.getLogger('cloudwatcher')
 
 app = Flask(__name__)
 
