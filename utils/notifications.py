@@ -154,6 +154,8 @@ class Notification(BaseNotification):
             except ValueError:
                 pass
             self.message = raw_message['Message']
+            self.subject = raw_message['Subject']
+            self.timestamp = raw_message['Timestamp']
         self._raise_errors_if_any()
 
 
