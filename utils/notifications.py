@@ -22,7 +22,7 @@ class BaseNotification(object):
         :param raw_message str:
         :return bool:
         """
-        logger.debug("Message Recieved:\n>>BEGIN>>\n%s\n<<<END>>>" % raw_message)
+        logger.info("Message Recieved:\n>>BEGIN>>\n%s\n<<<END>>>" % raw_message)
         self.debug_messages = []
         self.validate_signature = validate_signature
         self.raw_message = raw_message
