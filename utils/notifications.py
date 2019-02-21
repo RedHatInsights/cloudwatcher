@@ -7,12 +7,12 @@
 #
 # http://www.apache.org/licenses/LICENSE-2.0
 #
-from __future__ import absolute_import
 from . import crypto
-from cloudwatcher import logger
 import httplib2
 import json
+import logging
 
+logger = logging.getLogger('cloudwatcher')
 
 class BaseNotification(object):
     SIGNATURE_ATTR = []

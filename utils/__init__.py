@@ -8,10 +8,11 @@
 #
 # http://www.apache.org/licenses/LICENSE-2.0
 #
-from __future__ import absolute_import
 import json
 from .notifications import SubscriptionConfirmation, UnsubscribeConfirmation, Notification
-from cloudwatcher import logger
+import logging
+
+logger = logging.getLogger('cloudwatcher')
 
 class Validator(object):
     UNSUBSCRIBE = 'unsubscribe'

@@ -7,11 +7,12 @@
 #
 # http://www.apache.org/licenses/LICENSE-2.0
 #
-from __future__ import absolute_import
 from M2Crypto import X509
 from base64 import b64decode
-from cloudwatcher import logger
 import httplib2
+import logging
+
+logger = logging.getLogger('cloudwatcher')
 
 
 class ValidationException(Exception):
