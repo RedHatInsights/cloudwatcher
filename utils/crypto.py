@@ -49,7 +49,7 @@ class Version1(object):
             return ""
         msg = []
         for i in self.message.SIGNATURE_ATTR:
-            if i is 'Subject' and (i in self.message.raw_message and len(self.message.raw_message[i]) == 0):
+            if i == 'Subject' and (i not in self.message.raw_message):
                 continue
             msg.append(i)
             msg.append(self.message.raw_message[i])
