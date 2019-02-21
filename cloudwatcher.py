@@ -1,7 +1,7 @@
 import os
 import logging
 import sys
-
+import json
 import utils
 
 from flask import Flask, request, Response
@@ -36,9 +36,7 @@ def cloudwatch_post():
     sns_validation = utils.Validator()
     notification = sns_validation.handle(data)
     if notification.is_valid:
-        logger.info("Message Received", extra={"cw_subject": notification.subject,
-                                               "cw_message": notification.message,
-                                               "cw_timestamp": notification.timestamp})
+        logger.info(json.loads(notification.message))
     else:
         logger.error('Invalid Signature. Message Rejected')
         return Response('{"received": "failure"}', status=400, mimetype='application/json')
