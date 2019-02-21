@@ -36,6 +36,7 @@ def cloudwatch_post():
     sns_validation = utils.Validator()
     notification = sns_validation.handle(data)
     if notification.is_valid:
+        logger.info(notification.message)
         logger.info(json.loads(notification.message))
     else:
         logger.error('Invalid Signature. Message Rejected')
